@@ -1,20 +1,16 @@
 import { Router } from "express";
 
-import { TesteRepository } from "../repositories/TesteRepository";
+import { createTesteController } from "../modules/teste/useCases/createTeste";
+import { getTesteController } from "../modules/teste/useCases/getTest";
 
 const testeRoutes = Router();
-const testeRepository = new TesteRepository();
 
 testeRoutes.post("/", (req, res) => {
-  const { name } = req.body;
-
-  const data = testeRepository.create({ name });
-  res.status(200).send(data);
+  createTesteController.handle(req, res);
 });
 
 testeRoutes.get("/", (req, res) => {
-  const data = testeRepository.get();
-  res.status(200).send(data);
+  getTesteController.handle(req, res);
 });
 
 export { testeRoutes };
