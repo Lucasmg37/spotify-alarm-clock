@@ -1,0 +1,49 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Teste Documentation",
+    "desctiption": "API de teste",
+    "version": "1.0.0",
+    "contact": "lucasmg37@gmail.com"
+  },
+  "paths": {
+    "/test": {
+      "post": {
+        "tags": [
+          "Test"
+        ],
+        "summary": "Cria teste",
+        "description": "Cria teste",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "lastName": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "name": "Lucas",
+                  "lastName": "Morais"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Lucas Não aceito como name"
+          }
+        }
+      }
+    }
+  }
+}
