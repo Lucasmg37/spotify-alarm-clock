@@ -2,10 +2,11 @@ import { Teste } from "../model/teste";
 
 interface ICreateTesteDTO {
   name: string;
+  lastName?: string;
 }
 
 interface ITesteRepository {
-  create({ name }: ICreateTesteDTO): Teste;
+  create({ name, lastName }: ICreateTesteDTO): Teste;
   get(): Teste;
 }
 

@@ -21,9 +21,10 @@ class TesteRepository implements ITesteRepository {
     return this.instance;
   }
 
-  create({ name }: ICreateTesteDTO): Teste {
+  create({ name, lastName }: ICreateTesteDTO): Teste {
     Object.assign(this.testeModel, {
       name,
+      lastName,
     });
 
     return this.testeModel;
