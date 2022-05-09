@@ -1,3 +1,5 @@
+import { injectable, inject } from "tsyringe";
+
 import { Teste } from "../../entities/teste";
 import { ITesteRepository } from "../../repositories/ITesteRepository";
 
@@ -5,8 +7,12 @@ interface ICreateTesteUseCaseParams {
   name: string;
 }
 
+@injectable()
 class CreateTesteUseCase {
-  constructor(private testeRepository: ITesteRepository) {}
+  constructor(
+    @inject("TesteRepository")
+    private testeRepository: ITesteRepository
+  ) {}
 
   async execute({ name }: ICreateTesteUseCaseParams): Promise<Teste> {
     if (name === "Lucas") {

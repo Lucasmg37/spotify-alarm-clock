@@ -1,5 +1,6 @@
 import { parse } from "csv-parse";
 import fs from "fs";
+import { inject, injectable } from "tsyringe";
 
 import {
   ICreateTesteDTO,
@@ -11,8 +12,12 @@ interface IImportTeste {
   lastName: string;
 }
 
+@injectable()
 class ImportTesteUseCase {
-  constructor(private testeRepository: ITesteRepository) {}
+  constructor(
+    @inject("TesteRepository")
+    private testeRepository: ITesteRepository
+  ) {}
 
   loadName(file: Express.Multer.File): Promise<IImportTeste> {
     return new Promise((resolve, reject) => {

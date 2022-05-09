@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
+import { container } from "tsyringe";
 
 import { GetTesteUseCase } from "./GetTesteUseCase";
 
 class GetTesteController {
-  constructor(private getTesteUseCase: GetTesteUseCase) {}
-
   async handle(req: Request, res: Response): Promise<Response> {
-    const data = await this.getTesteUseCase.execute();
+    const getTesteUseCase = container.resolve(GetTesteUseCase);
+    const data = await getTesteUseCase.execute();
     return res.status(200).send(data);
   }
 }

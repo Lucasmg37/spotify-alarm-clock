@@ -1,8 +1,14 @@
+import { injectable, inject } from "tsyringe";
+
 import { Teste } from "../../entities/teste";
 import { ITesteRepository } from "../../repositories/ITesteRepository";
 
+@injectable()
 class GetTesteUseCase {
-  constructor(private testeRepository: ITesteRepository) {}
+  constructor(
+    @inject("TesteRepository")
+    private testeRepository: ITesteRepository
+  ) {}
 
   async execute(): Promise<Teste[]> {
     return this.testeRepository.get();
