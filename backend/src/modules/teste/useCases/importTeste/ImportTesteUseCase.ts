@@ -46,7 +46,7 @@ class ImportTesteUseCase {
 
   async execute(file: Express.Multer.File): Promise<ICreateTesteDTO> {
     const teste = await this.loadName(file);
-    const data = this.testeRepository.create(teste);
+    const data = await this.testeRepository.create(teste);
     fs.unlinkSync(file.path);
     return data;
   }

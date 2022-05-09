@@ -5,8 +5,8 @@ import { GetTesteUseCase } from "./GetTesteUseCase";
 class GetTesteController {
   constructor(private getTesteUseCase: GetTesteUseCase) {}
 
-  handle(req: Request, res: Response): Response {
-    const data = this.getTesteUseCase.execute();
+  async handle(req: Request, res: Response): Promise<Response> {
+    const data = await this.getTesteUseCase.execute();
     return res.status(200).send(data);
   }
 }

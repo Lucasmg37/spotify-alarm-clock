@@ -1,10 +1,10 @@
-import { Teste } from "../../model/teste";
+import { Teste } from "../../entities/teste";
 import { ITesteRepository } from "../../repositories/ITesteRepository";
 
 class GetTesteUseCase {
   constructor(private testeRepository: ITesteRepository) {}
 
-  execute(): Teste {
+  async execute(): Promise<Teste[]> {
     return this.testeRepository.get();
   }
 }

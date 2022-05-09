@@ -1,4 +1,4 @@
-import { Teste } from "../../model/teste";
+import { Teste } from "../../entities/teste";
 import { ITesteRepository } from "../../repositories/ITesteRepository";
 
 interface ICreateTesteUseCaseParams {
@@ -8,7 +8,7 @@ interface ICreateTesteUseCaseParams {
 class CreateTesteUseCase {
   constructor(private testeRepository: ITesteRepository) {}
 
-  execute({ name }: ICreateTesteUseCaseParams): Teste {
+  async execute({ name }: ICreateTesteUseCaseParams): Promise<Teste> {
     if (name === "Lucas") {
       throw new Error("Nome não pode ser Lucas");
     }

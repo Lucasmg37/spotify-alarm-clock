@@ -1,4 +1,4 @@
-import { Teste } from "../model/teste";
+import { Teste } from "../entities/teste";
 
 interface ICreateTesteDTO {
   name: string;
@@ -6,8 +6,8 @@ interface ICreateTesteDTO {
 }
 
 interface ITesteRepository {
-  create({ name, lastName }: ICreateTesteDTO): Teste;
-  get(): Teste;
+  create({ name, lastName }: ICreateTesteDTO): Promise<Teste>;
+  get(): Promise<Teste[]>;
 }
 
 export { ITesteRepository, ICreateTesteDTO };

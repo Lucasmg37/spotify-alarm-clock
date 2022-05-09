@@ -2,8 +2,10 @@ import { TesteRepository } from "../../repositories/implementations/TesteReposit
 import { GetTesteController } from "./GetTesteController";
 import { GetTesteUseCase } from "./GetTesteUseCase";
 
-const testeRepository = TesteRepository.getInstance();
-const getTesteUseCase = new GetTesteUseCase(testeRepository);
-const getTesteController = new GetTesteController(getTesteUseCase);
+export default () => {
+  const testeRepository = new TesteRepository();
+  const getTesteUseCase = new GetTesteUseCase(testeRepository);
+  const getTesteController = new GetTesteController(getTesteUseCase);
 
-export { getTesteController };
+  return getTesteController;
+};
