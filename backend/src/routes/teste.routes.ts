@@ -1,6 +1,8 @@
 import { Router } from "express";
 import multer from "multer";
 
+import upload from "../config/upload";
+import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
 import { CreateSessionController } from "../modules/teste/useCases/createSession/CreateSessionController";
 import createTesteController from "../modules/teste/useCases/createTeste";
 import { CreateTesteController } from "../modules/teste/useCases/createTeste/CreateTesteController";
@@ -11,9 +13,7 @@ import { ImportTesteController } from "../modules/teste/useCases/importTeste/Imp
 
 const testeRoutes = Router();
 
-const upload = multer({
-  dest: "./temp",
-});
+const uploadCsv = multer(upload.upload());
 
 const createTesteController = new CreateTesteController();
 const getTesteController = new GetTesteController();
@@ -25,10 +25,11 @@ testeRoutes.post("/session", createSessionController.handle);
 
 testeRoutes.post(
   "/upload",
-  upload.single("file"),
+  uploadCsv.single("file"),
   importTesteController.handle
 );
 
+testeRoutes.use(ensureAuthenticated);
 testeRoutes.get("/", getTesteController.handle);
 
 export { testeRoutes };
