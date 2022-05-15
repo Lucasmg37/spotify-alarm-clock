@@ -2,10 +2,8 @@ import { parse } from "csv-parse";
 import fs from "fs";
 import { inject, injectable } from "tsyringe";
 
-import {
-  ICreateTesteDTO,
-  ITesteRepository,
-} from "../../repositories/ITesteRepository";
+import { ICreateTesteDTO } from "../../dtos/ICreateDto";
+import { ITesteRepository } from "../../repositories/ITesteRepository";
 
 interface IImportTeste {
   name: string;

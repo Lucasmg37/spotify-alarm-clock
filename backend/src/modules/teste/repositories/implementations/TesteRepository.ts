@@ -1,8 +1,9 @@
 import { Repository } from "typeorm";
 
 import { AppDataSource } from "../../../../../data-source";
+import { ICreateTesteDTO } from "../../dtos/ICreateDto";
 import { Teste } from "../../entities/teste";
-import { ICreateTesteDTO, ITesteRepository } from "../ITesteRepository";
+import { ITesteRepository } from "../ITesteRepository";
 
 class TesteRepository implements ITesteRepository {
   private repository: Repository<Teste>;
@@ -30,8 +31,8 @@ class TesteRepository implements ITesteRepository {
   //   return this.instance;
   // }
 
-  async create({ name, lastName }: ICreateTesteDTO): Promise<Teste> {
-    const teste = this.repository.create({ name, lastName });
+  async create({ name, lastName, password }: ICreateTesteDTO): Promise<Teste> {
+    const teste = this.repository.create({ name, lastName, password });
     await this.repository.save(teste);
     return teste;
   }
@@ -39,6 +40,10 @@ class TesteRepository implements ITesteRepository {
   async get(): Promise<Teste[]> {
     const tests = await this.repository.find();
     return tests;
+  }
+  async findByUserName(name: string): Promise<Teste> {
+    const teste = await this.repository.findOneBy({ name });
+    return teste;
   }
 }
 

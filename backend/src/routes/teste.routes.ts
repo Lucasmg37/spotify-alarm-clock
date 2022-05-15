@@ -1,6 +1,7 @@
 import { Router } from "express";
 import multer from "multer";
 
+import { CreateSessionController } from "../modules/teste/useCases/createSession/CreateSessionController";
 import createTesteController from "../modules/teste/useCases/createTeste";
 import { CreateTesteController } from "../modules/teste/useCases/createTeste/CreateTesteController";
 import getTesteController from "../modules/teste/useCases/getTest";
@@ -17,8 +18,10 @@ const upload = multer({
 const createTesteController = new CreateTesteController();
 const getTesteController = new GetTesteController();
 const importTesteController = new ImportTesteController();
+const createSessionController = new CreateSessionController();
 
 testeRoutes.post("/", createTesteController.handle);
+testeRoutes.post("/session", createSessionController.handle);
 
 testeRoutes.post(
   "/upload",

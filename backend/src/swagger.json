@@ -18,19 +18,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string"
-                  },
-                  "lastName": {
-                    "type": "string"
-                  }
-                },
-                "example": {
-                  "name": "Lucas",
-                  "lastName": "Morais"
-                }
+                "$ref": "#/definitions/Test"
               }
             }
           }
@@ -43,6 +31,23 @@
             "description": "Lucas Não aceito como name"
           }
         }
+      }
+    }
+  },
+  "definitions": {
+    "Test": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        }
+      },
+      "example": {
+        "name": "Lucas",
+        "lastName": "Morais"
       }
     }
   }

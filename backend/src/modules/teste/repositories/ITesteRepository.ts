@@ -1,13 +1,10 @@
+import { ICreateTesteDTO } from "../dtos/ICreateDto";
 import { Teste } from "../entities/teste";
 
-interface ICreateTesteDTO {
-  name: string;
-  lastName?: string;
-}
-
 interface ITesteRepository {
-  create({ name, lastName }: ICreateTesteDTO): Promise<Teste>;
+  create({ name, lastName, password }: ICreateTesteDTO): Promise<Teste>;
   get(): Promise<Teste[]>;
+  findByUserName(name: string): Promise<Teste>;
 }
 
-export { ITesteRepository, ICreateTesteDTO };
+export { ITesteRepository };

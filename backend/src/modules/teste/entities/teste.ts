@@ -12,6 +12,9 @@ class Teste {
   @Column()
   lastName?: string;
 
+  @Column()
+  password: string;
+
   @CreateDateColumn()
   created_at?: Date;
 
