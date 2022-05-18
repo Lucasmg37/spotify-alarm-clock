@@ -19,7 +19,7 @@ export async function ensureAuthenticated(
 
     if (token) {
       try {
-        const { sub: user_id } = verify(token, "secret") as IPayload;
+        const { sub: user_id } = verify(token, process.env.JWT_KEY) as IPayload;
         req.user = {
           id: user_id,
         };
