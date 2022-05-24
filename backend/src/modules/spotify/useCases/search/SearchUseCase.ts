@@ -13,6 +13,7 @@ interface IResponse extends IAppPaginatorResponse {
   items: {
     name: string;
     id: string;
+    uri: string;
   }[];
 }
 
@@ -44,6 +45,7 @@ class SearchUseCase {
         return {
           name: item.name,
           id: item.id,
+          uri: item.uri,
         };
       });
     }
@@ -57,6 +59,7 @@ class SearchUseCase {
         return {
           name: item.name,
           id: item.id,
+          uri: item.uri,
         };
       });
     }
@@ -70,6 +73,7 @@ class SearchUseCase {
         return {
           name: item.name,
           id: item.id,
+          uri: item.uri,
         };
       });
     }
@@ -83,6 +87,7 @@ class SearchUseCase {
         return {
           name: item.name,
           id: item.id,
+          uri: item.uri,
         };
       });
     }

@@ -11,6 +11,7 @@ import swaggerFile from "./swagger.json";
 
 import "./database";
 import "./shared/container";
+import "./crons";
 
 const app = express();
 
@@ -27,8 +28,10 @@ app.use(
         status: "error",
         message: err.message,
       });
+      next();
     }
 
+    console.log("❌", err);
     return response.status(500).json({
       status: "error",
       message: `Internal server error: ${err.message}`,

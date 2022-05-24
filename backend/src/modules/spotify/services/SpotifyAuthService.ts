@@ -1,4 +1,4 @@
-import { Axios } from "axios";
+import axios, { Axios } from "axios";
 import QueryString from "qs";
 
 import { AppError } from "../../../errors/AppError";
@@ -18,7 +18,7 @@ class SpotifyAuthService implements ISpotifyAuthService {
   private clientCredentials = null as IClienteCredentials;
   private userCredentials = null as IUserCredentials;
 
-  private axios = new Axios({
+  private axios = axios.create({
     baseURL: "https://api.spotify.com/v1/",
     headers: {},
   });
@@ -44,13 +44,32 @@ class SpotifyAuthService implements ISpotifyAuthService {
     return this.axios;
   }
 
-  public setUserAccessToken(userCredentials: IUserCredentials) {
-    this.userCredentials = userCredentials;
+  private async getAccessTokenByRefreshToken(refreshToken: string) {
+    const data = QueryString.stringify({
+      grant_type: "refresh_token",
+      refresh_token: refreshToken,
+    });
+
+    const headers = this.getAuthenticationHeader();
+
+    const result = await this.axios.post(authUrl, data, {
+      headers,
+    });
+
+    this.userCredentials = result.data;
+
+    return result.data;
+  }
+
+  public async setUserAccessToken(userCredentials: IUserCredentials) {
+    // this.userCredentials = userCredentials;
+
+    await this.getAccessTokenByRefreshToken(userCredentials.refresh_token);
     this.addInterceptors();
   }
 
   public getClientAuthUser(): Axios {
-    const client = new Axios({
+    const client = axios.create({
       baseURL: "https://api.spotify.com/v1/",
       headers: {
         Authorization: `Bearer ${this.userCredentials.access_token}`,
@@ -72,7 +91,7 @@ class SpotifyAuthService implements ISpotifyAuthService {
       headers,
     });
 
-    const dataResponse: IUserCredentials = JSON.parse(result.data);
+    const dataResponse: IUserCredentials = result.data;
 
     if (dataResponse.error) {
       throw new AppError(dataResponse.error_description, result.status);
@@ -102,7 +121,7 @@ class SpotifyAuthService implements ISpotifyAuthService {
       headers,
     });
 
-    this.clientCredentials = JSON.parse(result.data);
+    this.clientCredentials = result.data;
     this.addInterceptors();
 
     return result.data;

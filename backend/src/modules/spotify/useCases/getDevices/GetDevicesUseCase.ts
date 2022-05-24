@@ -17,13 +17,14 @@ class GetDevicesUseCase {
       userUUid
     );
 
-    this.spotifyService.authService.setUserAccessToken({
+    await this.spotifyService.authService.setUserAccessToken({
       access_token: session.token,
       refresh_token: session.refreshToken,
       expires_in: 3600,
       token_type: "Bearer",
       scope: "",
     });
+
     return this.spotifyService.getDevices();
   }
 }

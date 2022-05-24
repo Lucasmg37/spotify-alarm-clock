@@ -1,5 +1,13 @@
 import { container } from "tsyringe";
 
+import { AlarmCallsRepository } from "../../modules/alarm/repositories/AlarmCallsRepository";
+import { AlarmDeviceRepository } from "../../modules/alarm/repositories/AlarmDeviceRepository";
+import { AlarmMediaRepository } from "../../modules/alarm/repositories/AlarmMediaRepository";
+import { AlarmRepository } from "../../modules/alarm/repositories/AlarmRepository";
+import { IAlarmCallsRepository } from "../../modules/alarm/repositories/interfaces/IAlarmCallsRepository";
+import { IAlarmDeviceRepository } from "../../modules/alarm/repositories/interfaces/IAlarmDeviceRepository";
+import { IAlarmMediaRepository } from "../../modules/alarm/repositories/interfaces/IAlarmMediaRepository";
+import { IAlarmRepository } from "../../modules/alarm/repositories/interfaces/IAlarmRepository";
 import { ISpotifyService } from "../../modules/spotify/services/interfaces/ISpotifyService";
 import { SpotifyService } from "../../modules/spotify/services/SpotifyService";
 import { TesteRepository } from "../../modules/teste/repositories/implementations/TesteRepository";
@@ -21,4 +29,20 @@ container.registerType<IUserRepository>("UserRepository", UserRepository);
 container.registerType<ISessionIntegrationRepository>(
   "SessionIntegrationRepository",
   SessionIntegrationRepository
+);
+
+container.registerType<IAlarmRepository>("AlarmRepository", AlarmRepository);
+container.registerType<IAlarmMediaRepository>(
+  "AlarmMediaRepository",
+  AlarmMediaRepository
+);
+
+container.registerType<IAlarmDeviceRepository>(
+  "AlarmDeviceRepository",
+  AlarmDeviceRepository
+);
+
+container.registerType<IAlarmCallsRepository>(
+  "AlarmCallsRepository",
+  AlarmCallsRepository
 );
