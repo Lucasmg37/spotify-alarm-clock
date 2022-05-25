@@ -8,7 +8,8 @@
   "scripts": {
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modules --respawn  src/server.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
-    "migration:run": "ts-node-dev ./node_modules/typeorm/cli migration:run -d ./data-source.ts"
+    "migration:run": "ts-node-dev ./node_modules/typeorm/cli migration:run -d ./data-source.ts",
+    "build": "tsc"
   },
   "dependencies": {
     "@types/node": "^17.0.31",

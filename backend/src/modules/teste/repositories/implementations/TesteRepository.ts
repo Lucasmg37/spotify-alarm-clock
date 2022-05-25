@@ -1,7 +1,7 @@
 import { Repository } from "typeorm";
 
 import { AppDataSource } from "../../../../../data-source";
-import { ICreateTesteDTO } from "../../dtos/ICreateDto";
+import { ICreateTesteDTO } from "../../dtos/ICreateTesteDTO";
 import { Teste } from "../../entities/teste";
 import { ITesteRepository } from "../ITesteRepository";
 

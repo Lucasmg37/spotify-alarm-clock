@@ -1,4 +1,4 @@
-import { ICreateTesteDTO } from "../dtos/ICreateDto";
+import { ICreateTesteDTO } from "../dtos/ICreateTesteDTO";
 import { Teste } from "../entities/teste";
 
 interface ITesteRepository {
