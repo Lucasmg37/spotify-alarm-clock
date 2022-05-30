@@ -16,8 +16,8 @@ const AppDataSource = new _typeorm.DataSource({
   database: process.env.DB_NAME,
   // synchronize: true,
   // logging: true,
-  entities: [`${__dirname}/../modules/**/entities/*.{js,ts}`],
+  entities: process.env.MODE === "PROD" ? [`./dist/modules/**/entities/*.{js,ts}`] : [`./src/modules/**/entities/*.{js,ts}`],
   subscribers: [],
-  migrations: process.env.MODE === "PROD" ? ["./database/migrations/*.js"] : ["./src/database/migrations/*.ts"]
+  migrations: process.env.MODE === "PROD" ? ["./dist/database/migrations/*.js"] : ["./src/database/migrations/*.ts"]
 });
 exports.AppDataSource = AppDataSource;
