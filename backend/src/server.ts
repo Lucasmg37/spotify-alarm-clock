@@ -14,6 +14,7 @@ import "./shared/container";
 import "./crons";
 
 const app = express();
+app.set("port", process.env.PORT || 3333);
 
 app.use(express.json());
 
@@ -39,6 +40,8 @@ app.use(
   }
 );
 
-app.listen(3000, () => {
+const port = app.get("port");
+
+app.listen(port, () => {
   console.log("Server started on port 3000");
 });

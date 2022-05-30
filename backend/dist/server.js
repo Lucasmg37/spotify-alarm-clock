@@ -25,6 +25,7 @@ require("./crons");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const app = (0, _express.default)();
+app.set("port", process.env.PORT || 3333);
 app.use(_express.default.json());
 app.use("/api-docs", _swaggerUiExpress.default.serve, _swaggerUiExpress.default.setup(_swagger.default));
 app.use(_routes.router);
@@ -43,6 +44,7 @@ app.use((err, request, response, next) => {
     message: `Internal server error: ${err.message}`
   });
 });
-app.listen(3000, () => {
+const port = app.get("port");
+app.listen(port, () => {
   console.log("Server started on port 3000");
 });
