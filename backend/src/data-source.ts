@@ -9,13 +9,10 @@ export const AppDataSource = new DataSource({
   database: process.env.DB_NAME,
   // synchronize: true,
   // logging: true,
-  entities:
-    process.env.MODE === "PROD"
-      ? ["./src/modules/**/entities/*.js"]
-      : ["./src/modules/**/entities/*.ts"],
+  entities: [`${__dirname}/../modules/**/entities/*.{js,ts}`],
   subscribers: [],
   migrations:
     process.env.MODE === "PROD"
-      ? ["./src/database/migrations/*.js"]
+      ? ["./database/migrations/*.js"]
       : ["./src/database/migrations/*.ts"],
 });
