@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.AlarmCallsRepository = void 0;
 
-var _dataSource = require("../../../../data-source");
+var _dataSource = require("../../../data-source");
 
 var _AlarmCalls = require("../entities/AlarmCalls");
 

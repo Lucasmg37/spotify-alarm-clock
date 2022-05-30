@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.AlarmMediaRepository = void 0;
 
-var _dataSource = require("../../../../data-source");
+var _dataSource = require("../../../data-source");
 
 var _AlarmMedia = require("../entities/AlarmMedia");
 
