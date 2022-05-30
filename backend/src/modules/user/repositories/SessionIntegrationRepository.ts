@@ -1,6 +1,6 @@
 import { Repository } from "typeorm";
 
-import { AppDataSource } from "../../../../data-source";
+import { AppDataSource } from "../../../data-source";
 import { CreateSessionIntegrationDTO } from "../dtos/CreateSessionIntegration.DTO";
 import { SessionIntegration } from "../entities/SessionIntegration";
 import { ISessionIntegrationRepository } from "./interfaces/ISessionIntegrationRepository";

@@ -1,6 +1,6 @@
 import { Repository } from "typeorm";
 
-import { AppDataSource } from "../../../../data-source";
+import { AppDataSource } from "../../../data-source";
 import { CreateAlarmMediaDTO } from "../dtos/CreateAlarmMedia.DTO";
 import { AlarmMedia } from "../entities/AlarmMedia";
 import { IAlarmMediaRepository } from "./interfaces/IAlarmMediaRepository";

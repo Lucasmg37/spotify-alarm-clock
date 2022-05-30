@@ -1,6 +1,6 @@
 import { Repository } from "typeorm";
 
-import { AppDataSource } from "../../../../data-source";
+import { AppDataSource } from "../../../data-source";
 import { CreateAlarmCallsDTO } from "../dtos/CreateAlarmCalls.DTO";
 import { AlarmCalls } from "../entities/AlarmCalls";
 import { IAlarmCallsRepository } from "./interfaces/IAlarmCallsRepository";
