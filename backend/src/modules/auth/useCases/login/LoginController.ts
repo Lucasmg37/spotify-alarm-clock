@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import QueryString from "qs";
 
-const client_id = "775e177caa4c4fb19beaaa57775bab8a";
-const redirect_uri = "http://localhost:3000/auth/callback";
+const client_id = process.env.SPOTIFY_CLIENT_ID;
+const redirect_uri = process.env.SPOTIFY_REDIRECT_URL;
 
 class LoginController {
   handle(req: Request, res: Response) {
