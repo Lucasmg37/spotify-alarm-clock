@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modules --respawn  src/server.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
-    "migration:run": "ts-node-dev ./node_modules/typeorm/cli migration:run -d ./data-source.ts",
+    "migration:run": "ts-node-dev ./node_modules/typeorm/cli migration:run -d ./src/data-source.ts",
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files"
   },
   "dependencies": {
