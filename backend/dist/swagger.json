@@ -12,7 +12,7 @@
         "tags": [
           "Test"
         ],
-        "summary": "Cria teste",
+        "summary": "Cria test",
         "description": "Cria teste",
         "requestBody": {
           "content": {
