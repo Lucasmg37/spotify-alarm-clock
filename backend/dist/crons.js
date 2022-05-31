@@ -16,7 +16,9 @@ var _ExecuteAlarmController = require("./modules/alarm/useCases/executeAlarm/Exe
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const executeAlarmController = new _ExecuteAlarmController.ExecuteAlarmController(); // cron.schedule("* * * * *", () => {
-//   console.log("⏲️ Executando a tarefa a cada 1 minuto");
-//   executeAlarmController.handle();
-// });
+const executeAlarmController = new _ExecuteAlarmController.ExecuteAlarmController();
+
+_nodeCron.default.schedule("* * * * *", () => {
+  console.log(`⏲️ Executando tarefa ${new Date().toDateString()}`);
+  executeAlarmController.handle();
+});

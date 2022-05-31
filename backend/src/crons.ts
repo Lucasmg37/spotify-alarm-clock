@@ -4,9 +4,9 @@ import { ExecuteAlarmController } from "./modules/alarm/useCases/executeAlarm/Ex
 
 const executeAlarmController = new ExecuteAlarmController();
 
-// cron.schedule("* * * * *", () => {
-//   console.log("⏲️ Executando a tarefa a cada 1 minuto");
-//   executeAlarmController.handle();
-// });
+cron.schedule("* * * * *", () => {
+  console.log(`⏲️ Executando tarefa ${new Date().toDateString()}`);
+  executeAlarmController.handle();
+});
 
 export { cron };
