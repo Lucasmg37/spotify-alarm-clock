@@ -19,6 +19,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 const executeAlarmController = new _ExecuteAlarmController.ExecuteAlarmController();
 
 _nodeCron.default.schedule("* * * * *", () => {
-  console.log(`⏲️ Executando tarefa ${new Date().toDateString()}`);
+  console.log(`⏲️ Executando tarefa ${new Date().toString()}`);
   executeAlarmController.handle();
 });

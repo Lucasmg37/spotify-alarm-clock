@@ -5,7 +5,7 @@ import { ExecuteAlarmController } from "./modules/alarm/useCases/executeAlarm/Ex
 const executeAlarmController = new ExecuteAlarmController();
 
 cron.schedule("* * * * *", () => {
-  console.log(`⏲️ Executando tarefa ${new Date().toDateString()}`);
+  console.log(`⏲️ Executando tarefa ${new Date().toString()}`);
   executeAlarmController.handle();
 });
 
