@@ -17,6 +17,7 @@ class CreateAlarmDTO {
     this.active = void 0;
     this.alarmMedia = void 0;
     this.alarmDevice = void 0;
+    this.nextAlarmDate = void 0;
   }
 
 }

@@ -1,5 +1,6 @@
 import { inject, injectable } from "tsyringe";
 
+import { AlarmUtils } from "../../../../utils/AlarmUtils";
 import { CreateAlarmDeviceDTO } from "../../dtos/CreateAlarmDevice.DTO";
 import { CreateAlarmMediaDTO } from "../../dtos/CreateAlarmMedia.DTO";
 import { Alarm } from "../../entities/Alarm";
@@ -37,6 +38,12 @@ class CreateAlarmUseCase {
   async execute(data: IExecuteProps): Promise<Alarm> {
     const { alarm } = data;
 
+    const nextAlarmDate = AlarmUtils.getNextAlarm(
+      alarm.time,
+      alarm.repeat,
+      alarm.weekDays
+    );
+
     const alarmMedia = await this.alarmMediaRepository.create(alarm.alarmMedia);
 
     const alarmDevice = await this.alarmDeviceRepository.create(
@@ -45,6 +52,7 @@ class CreateAlarmUseCase {
 
     const alarmCreated = await this.alarmRepository.create({
       ...alarm,
+      nextAlarmDate,
       alarmDevice,
       alarmMedia,
     });

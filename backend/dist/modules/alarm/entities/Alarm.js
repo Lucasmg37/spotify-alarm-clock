@@ -15,7 +15,7 @@ var _AlarmDevice = require("./AlarmDevice");
 
 var _AlarmMedia = require("./AlarmMedia");
 
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _descriptor11, _descriptor12;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _descriptor11, _descriptor12, _descriptor13;
 
 function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
 
@@ -23,7 +23,7 @@ function _applyDecoratedDescriptor(target, property, decorators, descriptor, con
 
 function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'proposal-class-properties is enabled and runs after the decorators transform.'); }
 
-let Alarm = (_dec = (0, _typeorm.Entity)("alarm"), _dec2 = Reflect.metadata("design:type", Function), _dec3 = Reflect.metadata("design:paramtypes", [void 0]), _dec4 = (0, _typeorm.PrimaryColumn)(), _dec5 = Reflect.metadata("design:type", String), _dec6 = (0, _typeorm.Column)(), _dec7 = Reflect.metadata("design:type", String), _dec8 = (0, _typeorm.Column)(), _dec9 = Reflect.metadata("design:type", String), _dec10 = (0, _typeorm.Column)(), _dec11 = Reflect.metadata("design:type", String), _dec12 = (0, _typeorm.Column)(), _dec13 = Reflect.metadata("design:type", Boolean), _dec14 = (0, _typeorm.Column)(), _dec15 = Reflect.metadata("design:type", String), _dec16 = (0, _typeorm.Column)(), _dec17 = Reflect.metadata("design:type", typeof Date === "undefined" ? Object : Date), _dec18 = (0, _typeorm.Column)(), _dec19 = Reflect.metadata("design:type", Boolean), _dec20 = (0, _typeorm.CreateDateColumn)(), _dec21 = Reflect.metadata("design:type", typeof Date === "undefined" ? Object : Date), _dec22 = (0, _typeorm.ManyToOne)(() => _AlarmDevice.AlarmDevice, alarmDevice => alarmDevice.alarms), _dec23 = Reflect.metadata("design:type", typeof _AlarmDevice.AlarmDevice === "undefined" ? Object : _AlarmDevice.AlarmDevice), _dec24 = (0, _typeorm.ManyToOne)(() => _AlarmMedia.AlarmMedia, alarmMedia => alarmMedia.alarms), _dec25 = Reflect.metadata("design:type", typeof _AlarmMedia.AlarmMedia === "undefined" ? Object : _AlarmMedia.AlarmMedia), _dec26 = (0, _typeorm.OneToMany)(() => _AlarmCalls.AlarmCalls, alarmCalls => alarmCalls.alarm), _dec27 = Reflect.metadata("design:type", Array), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = class Alarm {
+let Alarm = (_dec = (0, _typeorm.Entity)("alarm"), _dec2 = Reflect.metadata("design:type", Function), _dec3 = Reflect.metadata("design:paramtypes", [void 0]), _dec4 = (0, _typeorm.PrimaryColumn)(), _dec5 = Reflect.metadata("design:type", String), _dec6 = (0, _typeorm.Column)(), _dec7 = Reflect.metadata("design:type", String), _dec8 = (0, _typeorm.Column)(), _dec9 = Reflect.metadata("design:type", String), _dec10 = (0, _typeorm.Column)(), _dec11 = Reflect.metadata("design:type", String), _dec12 = (0, _typeorm.Column)(), _dec13 = Reflect.metadata("design:type", Boolean), _dec14 = (0, _typeorm.Column)(), _dec15 = Reflect.metadata("design:type", String), _dec16 = (0, _typeorm.Column)(), _dec17 = Reflect.metadata("design:type", typeof Date === "undefined" ? Object : Date), _dec18 = (0, _typeorm.Column)(), _dec19 = Reflect.metadata("design:type", Boolean), _dec20 = (0, _typeorm.Column)(), _dec21 = Reflect.metadata("design:type", typeof Date === "undefined" ? Object : Date), _dec22 = (0, _typeorm.CreateDateColumn)(), _dec23 = Reflect.metadata("design:type", typeof Date === "undefined" ? Object : Date), _dec24 = (0, _typeorm.ManyToOne)(() => _AlarmDevice.AlarmDevice, alarmDevice => alarmDevice.alarms), _dec25 = Reflect.metadata("design:type", typeof _AlarmDevice.AlarmDevice === "undefined" ? Object : _AlarmDevice.AlarmDevice), _dec26 = (0, _typeorm.ManyToOne)(() => _AlarmMedia.AlarmMedia, alarmMedia => alarmMedia.alarms), _dec27 = Reflect.metadata("design:type", typeof _AlarmMedia.AlarmMedia === "undefined" ? Object : _AlarmMedia.AlarmMedia), _dec28 = (0, _typeorm.OneToMany)(() => _AlarmCalls.AlarmCalls, alarmCalls => alarmCalls.alarm), _dec29 = Reflect.metadata("design:type", Array), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = class Alarm {
   setWeekDays(weekDays) {
     this.weekDays = JSON.stringify(weekDays);
   }
@@ -49,13 +49,15 @@ let Alarm = (_dec = (0, _typeorm.Entity)("alarm"), _dec2 = Reflect.metadata("des
 
     _initializerDefineProperty(this, "active", _descriptor8, this);
 
-    _initializerDefineProperty(this, "createdAt", _descriptor9, this);
+    _initializerDefineProperty(this, "nextAlarmDate", _descriptor9, this);
 
-    _initializerDefineProperty(this, "alarmDevice", _descriptor10, this);
+    _initializerDefineProperty(this, "createdAt", _descriptor10, this);
 
-    _initializerDefineProperty(this, "alarmMedia", _descriptor11, this);
+    _initializerDefineProperty(this, "alarmDevice", _descriptor11, this);
 
-    _initializerDefineProperty(this, "alarmCalls", _descriptor12, this);
+    _initializerDefineProperty(this, "alarmMedia", _descriptor12, this);
+
+    _initializerDefineProperty(this, "alarmCalls", _descriptor13, this);
 
     if (!uuid) {
       this.uuid = (0, _uuid.v4)();
@@ -102,22 +104,27 @@ let Alarm = (_dec = (0, _typeorm.Entity)("alarm"), _dec2 = Reflect.metadata("des
   enumerable: true,
   writable: true,
   initializer: null
-}), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, "createdAt", [_dec20, _dec21], {
+}), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, "nextAlarmDate", [_dec20, _dec21], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: null
-}), _descriptor10 = _applyDecoratedDescriptor(_class2.prototype, "alarmDevice", [_dec22, _dec23], {
+}), _descriptor10 = _applyDecoratedDescriptor(_class2.prototype, "createdAt", [_dec22, _dec23], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: null
-}), _descriptor11 = _applyDecoratedDescriptor(_class2.prototype, "alarmMedia", [_dec24, _dec25], {
+}), _descriptor11 = _applyDecoratedDescriptor(_class2.prototype, "alarmDevice", [_dec24, _dec25], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: null
-}), _descriptor12 = _applyDecoratedDescriptor(_class2.prototype, "alarmCalls", [_dec26, _dec27], {
+}), _descriptor12 = _applyDecoratedDescriptor(_class2.prototype, "alarmMedia", [_dec26, _dec27], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: null
+}), _descriptor13 = _applyDecoratedDescriptor(_class2.prototype, "alarmCalls", [_dec28, _dec29], {
   configurable: true,
   enumerable: true,
   writable: true,

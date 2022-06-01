@@ -12,6 +12,7 @@ class CreateAlarmDTO {
   active: boolean;
   alarmMedia: AlarmMedia;
   alarmDevice: AlarmDevice;
+  nextAlarmDate: Date;
 }
 
 export { CreateAlarmDTO };

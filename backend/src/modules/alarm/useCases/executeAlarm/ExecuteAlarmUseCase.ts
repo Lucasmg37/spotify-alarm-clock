@@ -1,5 +1,6 @@
 import { inject, injectable } from "tsyringe";
 
+import { AlarmUtils } from "../../../../utils/AlarmUtils";
 import { ISpotifyService } from "../../../spotify/services/interfaces/ISpotifyService";
 import { ISessionIntegrationRepository } from "../../../user/repositories/interfaces/ISessionIntegrationRepository";
 import { IAlarmCallsRepository } from "../../repositories/interfaces/IAlarmCallsRepository";
@@ -36,11 +37,7 @@ class ExecuteAlarmUseCase {
           // verify if it let be call
           const now = new Date().getTime();
           const nowDate = new Date();
-          const timeAlarm = new Date(
-            `${nowDate.getFullYear()}-${
-              nowDate.getMonth() + 1
-            }-${nowDate.getDate()} ${alarm.time}`
-          ).getTime();
+          const timeAlarm = new Date(alarm.nextAlarmDate).getTime();
 
           const diff = timeAlarm - now;
           const letBeCalled = timeAlarm <= now;
@@ -110,6 +107,16 @@ class ExecuteAlarmUseCase {
               }
             }
           }
+
+          await this.alarmRepository.create({
+            ...alarm,
+            nextAlarmDate: AlarmUtils.getNextAlarm(
+              alarm.time,
+              alarm.repeat,
+              weekDaysArray
+            ),
+            weekDays: weekDaysArray,
+          });
 
           await this.alarmCallsRepository.create({
             alarmUuid: alarm.uuid,

@@ -38,6 +38,9 @@ class Alarm {
   @Column()
   active: boolean;
 
+  @Column()
+  nextAlarmDate: Date;
+
   @CreateDateColumn()
   createdAt: Date;
 

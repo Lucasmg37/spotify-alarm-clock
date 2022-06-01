@@ -7,6 +7,8 @@ exports.ExecuteAlarmUseCase = void 0;
 
 var _tsyringe = require("tsyringe");
 
+var _AlarmUtils = require("../../../../utils/AlarmUtils");
+
 var _ISpotifyService = require("../../../spotify/services/interfaces/ISpotifyService");
 
 var _ISessionIntegrationRepository = require("../../../user/repositories/interfaces/ISessionIntegrationRepository");
@@ -47,7 +49,7 @@ let ExecuteAlarmUseCase = (_dec = (0, _tsyringe.injectable)(), _dec2 = function 
 
         const now = new Date().getTime();
         const nowDate = new Date();
-        const timeAlarm = new Date(`${nowDate.getFullYear()}-${nowDate.getMonth() + 1}-${nowDate.getDate()} ${alarm.time}`).getTime();
+        const timeAlarm = new Date(alarm.nextAlarmDate).getTime();
         const diff = timeAlarm - now;
         const letBeCalled = timeAlarm <= now; // 30 minutes
 
@@ -97,6 +99,10 @@ let ExecuteAlarmUseCase = (_dec = (0, _tsyringe.injectable)(), _dec2 = function 
           }
         }
 
+        await this.alarmRepository.create({ ...alarm,
+          nextAlarmDate: _AlarmUtils.AlarmUtils.getNextAlarm(alarm.time, alarm.repeat, weekDaysArray),
+          weekDays: weekDaysArray
+        });
         await this.alarmCallsRepository.create({
           alarmUuid: alarm.uuid,
           time: alarm.time

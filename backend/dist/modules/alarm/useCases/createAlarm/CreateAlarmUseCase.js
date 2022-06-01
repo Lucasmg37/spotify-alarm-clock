@@ -7,6 +7,8 @@ exports.CreateAlarmUseCase = void 0;
 
 var _tsyringe = require("tsyringe");
 
+var _AlarmUtils = require("../../../../utils/AlarmUtils");
+
 var _IAlarmDeviceRepository = require("../../repositories/interfaces/IAlarmDeviceRepository");
 
 var _IAlarmMediaRepository = require("../../repositories/interfaces/IAlarmMediaRepository");
@@ -32,9 +34,13 @@ let CreateAlarmUseCase = (_dec = (0, _tsyringe.injectable)(), _dec2 = function (
     const {
       alarm
     } = data;
+
+    const nextAlarmDate = _AlarmUtils.AlarmUtils.getNextAlarm(alarm.time, alarm.repeat, alarm.weekDays);
+
     const alarmMedia = await this.alarmMediaRepository.create(alarm.alarmMedia);
     const alarmDevice = await this.alarmDeviceRepository.create(alarm.alarmDevice);
     const alarmCreated = await this.alarmRepository.create({ ...alarm,
+      nextAlarmDate,
       alarmDevice,
       alarmMedia
     });
