@@ -28,12 +28,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 const app = (0, _express.default)();
 app.set("port", process.env.PORT || 3333);
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
-  app.use((0, _cors.default)());
-  next();
-});
+app.use((0, _cors.default)({
+  origin: true
+}));
 app.use(_express.default.json());
 app.use("/api-docs", _swaggerUiExpress.default.serve, _swaggerUiExpress.default.setup(_swagger.default));
 app.use(_routes.router);

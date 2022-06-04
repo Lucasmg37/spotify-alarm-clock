@@ -16,12 +16,7 @@ import "./crons";
 const app = express();
 app.set("port", process.env.PORT || 3333);
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
-  app.use(cors());
-  next();
-});
+app.use(cors({ origin: true }));
 
 app.use(express.json());
 
