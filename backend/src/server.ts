@@ -1,8 +1,8 @@
 import "dotenv/config";
+import cors from "cors";
 import express, { NextFunction, Request, Response } from "express";
 import "reflect-metadata";
 import swaggerUi from "swagger-ui-express";
-
 import "express-async-errors";
 
 import { AppError } from "./errors/AppError";
@@ -15,6 +15,13 @@ import "./crons";
 
 const app = express();
 app.set("port", process.env.PORT || 3333);
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+  app.use(cors());
+  next();
+});
 
 app.use(express.json());
 
