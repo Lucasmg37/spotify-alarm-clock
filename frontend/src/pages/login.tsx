@@ -15,7 +15,7 @@ const Login: React.FC = () => {
 
       try {
         await getLoggedUser()
-        router.push('/')
+        router.push('/alarm')
 
       } catch (error) {
         window.location.href = 'https://alarm-spotify.herokuapp.com/auth/login'
