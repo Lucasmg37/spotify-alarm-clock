@@ -1,0 +1,12 @@
+.loggedAreaComponent {
+    background: #111;
+    height: 100vh;
+    display: flex;
+    padding: 40px;
+
+    > div {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+}
