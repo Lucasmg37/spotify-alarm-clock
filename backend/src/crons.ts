@@ -4,9 +4,14 @@ import { ExecuteAlarmController } from "./modules/alarm/useCases/executeAlarm/Ex
 
 const executeAlarmController = new ExecuteAlarmController();
 
-cron.schedule("* * * * *", () => {
+cron.schedule("* * * * *", async () => {
   console.log(`⏲️ Executando tarefa ${new Date().toString()}`);
-  executeAlarmController.handle();
+  try {
+    await executeAlarmController.handle();
+  } catch (error) {
+    console.error("❌");
+    console.error(error);
+  }
 });
 
 export { cron };
