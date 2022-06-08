@@ -14,6 +14,9 @@ interface IResponse extends IAppPaginatorResponse {
     name: string;
     id: string;
     uri: string;
+    images: string;
+    artists?: string[];
+    album?: string;
   }[];
 }
 
@@ -46,6 +49,9 @@ class SearchUseCase {
           name: item.name,
           id: item.id,
           uri: item.uri,
+          image: item.album.images[0].url,
+          artists: item.artists.map((artist) => artist.name),
+          album: item.album.name,
         };
       });
     }
@@ -60,6 +66,7 @@ class SearchUseCase {
           name: item.name,
           id: item.id,
           uri: item.uri,
+          image: item.images[0]?.url,
         };
       });
     }
@@ -74,6 +81,7 @@ class SearchUseCase {
           name: item.name,
           id: item.id,
           uri: item.uri,
+          image: item.images[0].url,
         };
       });
     }
@@ -88,6 +96,7 @@ class SearchUseCase {
           name: item.name,
           id: item.id,
           uri: item.uri,
+          image: item.images[0].url,
         };
       });
     }
