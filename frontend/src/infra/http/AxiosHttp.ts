@@ -21,8 +21,8 @@ class AxiosHttp implements IHttp {
 
   constructor() {
     this.client = axios.create({
-      // baseURL: "https://alarm-spotify.herokuapp.com",
-      baseURL: "http://localhost:3000",
+      baseURL: "https://alarm-spotify.herokuapp.com",
+      // baseURL: "http://localhost:3000",
     });
     this.addInterceptors();
   }
